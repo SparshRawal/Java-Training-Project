@@ -53,7 +53,7 @@ public class FeedbackDAOIMPL implements FeedbackDAO {
             ps.setNString(2,feedback.getName());
             ps.setInt(1,feedback.getUser_ID());
             ps.setNString(3,feedback.getEmail());
-            ps.setNString(5,feedback.getFeedback());
+            ps.setNString(4,feedback.getFeedback());
             ps.executeUpdate();
             return true;
         }
