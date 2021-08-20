@@ -21,13 +21,14 @@ select * from contact;
 drop table contact;
 
 
-create table admin ( Admin_ID int(20) primary key, Name varchar(100),Email varchar(100),Password varchar(100));
-insert into admin values (1,'rahul','rahul@gmail.com','pass');
-insert into admin values (2,'ankit','ankit@gmail.com','pass');
-insert into admin values (3,'gowthami','gowthami@gmail.com','pass');
-insert into admin values (4,'aishwarya','aishwarya@gmail.com','pass');
-insert into admin values (5,'harshitha','harshitha@gmail.com','pass');
+create table admin ( Admin_ID int(20) primary key auto_increment, Name varchar(100),Email varchar(100),Password varchar(100))auto_increment=901;
+insert into admin(Name,Email,Password) values ('rahul','rahul@gmail.com','pass');
+insert into admin(Name,Email,Password) values ('ankit','ankit@gmail.com','pass');
+insert into admin(Name,Email,Password) values ('gowthami','gowthami@gmail.com','pass');
+insert into admin(Name,Email,Password) values ('aishwarya','aishwarya@gmail.com','pass');
+insert into admin(Name,Email,Password) values ('harshitha','harshitha@gmail.com','pass');
 Select * from admin;
+drop table admin;
 
 
 create table course ( course_id int(20) primary key, c_name varchar(100),c_desp varchar(100), c_fees varchar(100),c_resource varchar(100));
@@ -41,3 +42,6 @@ insert into feedback(user_id,name,email,feedback)values(101,'ankit','ankit@gmail
 insert into feedback(user_id,name,email,feedback)values(105,'harshitha','harshitha@gmail.com','good');
 select * from feedback;
 drop table feedback;
+
+
+select User_ID,Name,Phone_No,Email,Address,Reg_Date,Upload_Photo from user where Email="ankit@gmail.com" and Password="ankit" limit 1;
