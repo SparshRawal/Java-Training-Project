@@ -22,7 +22,7 @@
 							<label class="col-sm-2" for="name" style="text-align: left">Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="name"
-									placeholder="Enter Name">
+									placeholder="Enter Name" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -31,7 +31,7 @@
 								ID:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="id"
-									placeholder="Enter User ID">
+									placeholder="Enter User ID" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -40,7 +40,7 @@
 								ID:</label>
 							<div class="col-sm-6">
 								<input type="email" class="form-control" name="email"
-									placeholder="Enter Email ID">
+									placeholder="Enter Email ID" required>
 							</div>
 						</div>
 
@@ -49,7 +49,7 @@
 							<label class="col-sm-2" for="feedback" style="text-align: left">Feedback:</label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="feedback"
-									placeholder="Enter Feedback" rows="3"></textarea>
+									placeholder="Enter Feedback" rows="3" required></textarea>
 							</div>
 						</div>
 						<div class="form-group row">

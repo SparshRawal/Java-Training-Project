@@ -7,6 +7,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.amdocs.project.dao.CourseDAO;
+import com.amdocs.project.dao.UserCourseConnectorDAO;
 import com.amdocs.project.dao.UserDAO;
+import com.amdocs.project.dao.impl.CourseDAOIMPL;
+import com.amdocs.project.dao.impl.UserCourseConnectorDAOIMPL;
 import com.amdocs.project.dao.impl.UserDAOIMPL;
 import com.amdocs.project.model.*;
 
@@ -31,6 +36,18 @@ public class LoginHandler extends HttpServlet {
 	    private static String Upload_Image;
 	    private static int User_ID;
 	    private static Date reg_date;
+	    public static ArrayList<Integer> List;
+		
+
+		public static ArrayList<Integer> getList() {
+			return List;
+		}
+
+
+		public static void setList(ArrayList<Integer> list) {
+			List = list;
+		}
+
 	    public static String getName() {
 			return Name;
 		}
@@ -105,7 +122,9 @@ public class LoginHandler extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session=request.getSession(); 
-		session.invalidate();
+		
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		
@@ -131,9 +150,13 @@ public class LoginHandler extends HttpServlet {
 			request.setAttribute("reg_date", reg_date);
 			request.setAttribute("phone", Phone);
 			request.setAttribute("file", Upload_Image);
-			request.getRequestDispatcher("index.jsp").include(request, response);  
-	        session.setAttribute("name",Name);  
-			
+			  
+	        session.setAttribute("name",Name); 
+	        UserCourseConnectorDAO c_dao= new UserCourseConnectorDAOIMPL();
+			list=c_dao.GetEnrolledCourses(User_ID);
+			List=list;
+			System.out.println(List);
+			request.getRequestDispatcher("UserHomePage.jsp").include(request, response);
 		}
 			
 		else

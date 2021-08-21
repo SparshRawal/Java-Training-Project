@@ -14,24 +14,14 @@
 			<br>
 			<div class="container">
 				<form action="RegisterCourse" class="form-horizontal" method="POST">
-					<form style="width: 300px">
-
-						<div class="form-group row">
-							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="id" style="text-align: left">Course
-								ID:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" name="course_id"
-									placeholder="Enter Course ID">
-							</div>
-						</div>
+					<form style="width: 300px">				
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
 							<label class="col-sm-2" for="name" style="text-align: left">Course
 								Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="course_name"
-									placeholder="Enter New Course Name">
+									placeholder="Enter New Course Name" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -40,7 +30,7 @@
 								Description:</label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="desc"
-									placeholder="Enter Course Description" rows="3"></textarea>
+									placeholder="Enter Course Description" rows="3" required></textarea>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -51,7 +41,7 @@
 							<div class="custom-file col-sm-5">
 								<input type="file" class="custom-file-input pr-4"
 									id="customFile" name="file"> <label
-									class="custom-file-label" for="customFile">Choose file</label>
+									class="custom-file-label" for="customFile" required>Choose file</label>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -60,7 +50,7 @@
 								Fees:</label>
 							<div class="col-sm-6">
 								<input type="number" class="form-control" name="fees"
-									placeholder="Enter Course Fee">
+									placeholder="Enter Course Fee" required>
 							</div>
 						</div>
 						<div class="form-group row">

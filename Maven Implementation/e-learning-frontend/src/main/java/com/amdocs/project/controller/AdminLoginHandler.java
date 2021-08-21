@@ -95,7 +95,7 @@ public class AdminLoginHandler extends HttpServlet {
 			request.setAttribute("email", Email);
 			
 
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("AdminHomePage.jsp").forward(request, response);
 //			session.setAttribute("name",Name);
 		}
 			

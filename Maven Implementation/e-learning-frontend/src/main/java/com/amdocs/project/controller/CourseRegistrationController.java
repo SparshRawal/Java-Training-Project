@@ -25,7 +25,6 @@ public class CourseRegistrationController extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
-		int id = Integer.parseInt(request.getParameter("course_id"));
 		String name = request.getParameter("course_name");
 		String desc = request.getParameter("desc");
 		int fee = Integer.parseInt(request.getParameter("fees"));
@@ -33,7 +32,7 @@ public class CourseRegistrationController extends HttpServlet {
 		
 		
 		CourseDAO dao = new CourseDAOIMPL();
-		Course course = new Course(name,id,file,desc,fee);
+		Course course = new Course(name,file,desc,fee);
 		
 		boolean status = dao.saveCourse(course);
 		

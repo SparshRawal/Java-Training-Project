@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h2 style="text-align: center">Login</h2>
-			<br>
+			<hr><br>
 			<div class="container">
 				<form action="HandleUserLogin" class="form-horizontal" method="GET">
 					<form style="width: 300px">
@@ -20,7 +20,7 @@
 							<label class="col-sm-2" for="id" style="text-align: left">Email:</label>
 							<div class="col-sm-6">
 								<input type="email" class="form-control" name="email"
-									placeholder="Enter Email">
+									placeholder="Enter Email" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -28,9 +28,9 @@
 							<label class="col-sm-2" for="name" style="text-align: left">Password:</label>
 							<div class="col-sm-6">
 								<input type="password" class="form-control" name="pwd"
-									placeholder="Enter Password">
+									placeholder="Enter Password" required>
 							</div>
-						</div>
+						</div><br>
 						<div class="form-group row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-3">
@@ -41,7 +41,14 @@
 							</div>
 						</div>
 					</form>
-				</form>
+				</form><hr><br>
+				<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+				<a href="UserRegistration.jsp" class="btn btn-outline-primary btn-block">New User? Sign Up !</a> 
+				</div>
+				<div class="col-sm-4"></div>
+				</div>
 			</div>
 		</div>
 	</div>

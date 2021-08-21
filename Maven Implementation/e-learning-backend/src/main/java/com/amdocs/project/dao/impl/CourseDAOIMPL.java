@@ -47,14 +47,13 @@ public class CourseDAOIMPL implements CourseDAO {
 
     @Override
     public boolean saveCourse(Course course) {
-        String insert = "insert into course values(?,?,?,?,?)";
+        String insert = "insert into course(c_name,c_desp,c_fees,c_resource) values(?,?,?,?)";
         try{
             PreparedStatement ps= conn.prepareStatement(insert);
-            ps.setNString(2,course.getCourse_name());
-            ps.setInt(1,course.getCourse_ID());
-            ps.setNString(3,course.getCourse_Desc());
-            ps.setInt(4,course.getCourse_Fee());
-            ps.setNString(5,course.getCourse_Resource());
+            ps.setNString(1,course.getCourse_name());
+            ps.setNString(2,course.getCourse_Desc());
+            ps.setInt(3,course.getCourse_Fee());
+            ps.setNString(4,course.getCourse_Resource());
             ps.executeUpdate();
             return true;
         }
@@ -77,6 +76,24 @@ public class CourseDAOIMPL implements CourseDAO {
             e.printStackTrace();
         }
         return false;
+    }
+    @Override
+    public Course GetCourse(int Course_ID) {
+    	
+        String query="select c_name,c_desp,c_fees,c_resource from course where course_id=?";
+        try{
+        	PreparedStatement ps= conn.prepareStatement(query);
+        	ps.setInt(1, Course_ID);
+        	System.out.println(ps);
+            ResultSet data=ps.executeQuery();
+            data.next();
+            Course RetrievedCourse=new Course(data.getNString(1),data.getNString(4),data.getNString(2),data.getInt(3));
+            return RetrievedCourse;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

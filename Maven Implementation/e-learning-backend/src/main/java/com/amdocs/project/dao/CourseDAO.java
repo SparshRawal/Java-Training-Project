@@ -7,4 +7,5 @@ public interface CourseDAO {
     boolean display();
     boolean saveCourse(Course course);
     boolean delete(int courseid);
+    Course GetCourse(int Course_ID);
 }

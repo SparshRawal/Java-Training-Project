@@ -9,9 +9,8 @@ public class Course {
 
     private Course(){}
 
-    public Course(String course_name, int course_ID, String course_Resource, String course_Desc, int course_Fee) {
+    public Course(String course_name, String course_Resource, String course_Desc, int course_Fee) {
         Course_name = course_name;
-        Course_ID = course_ID;
         Course_Resource = course_Resource;
         Course_Desc = course_Desc;
         Course_Fee = course_Fee;
