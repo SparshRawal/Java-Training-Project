@@ -17,30 +17,25 @@
 				<form action="RegisterFeedback" class="form-horizontal"
 					method="POST">
 					<form style="width: 300px">
+						
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
 							<label class="col-sm-2" for="name" style="text-align: left">Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="name"
-									placeholder="Enter Name" required>
+									placeholder="Enter your Name" required>
+								<input type="hidden" name="id"
+									value=<%=user.getUser_ID() %>>
 							</div>
 						</div>
-						<div class="form-group row">
-							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="id" style="text-align: left">User
-								ID:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" name="id"
-									placeholder="Enter User ID" required>
-							</div>
-						</div>
+						
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
 							<label class="col-sm-2" for="email" style="text-align: left">Email
 								ID:</label>
 							<div class="col-sm-6">
 								<input type="email" class="form-control" name="email"
-									placeholder="Enter Email ID" required>
+									placeholder="Enter your Email ID" required>
 							</div>
 						</div>
 

@@ -5,6 +5,7 @@ import com.amdocs.project.db.DBUtils;
 import com.amdocs.project.model.Feedback;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class FeedbackDAOIMPL implements FeedbackDAO {
     Connection conn= DBUtils.getConn();
@@ -64,17 +65,76 @@ public class FeedbackDAOIMPL implements FeedbackDAO {
     }
 
     @Override
-    public boolean delete(int feedbackid) {
-        String query="delete from admin where admin_id=?";
+    public ArrayList<Integer> AllUserIDs() {
+    	ArrayList<Integer> UserList=new ArrayList<Integer>();
+        String query="select distinct user_id from feedback";
         try{
             PreparedStatement ps= conn.prepareStatement(query);
-            ps.setInt(1,feedbackid);
-            ps.executeUpdate();
-            return true;
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            	UserList.add(rs.getInt(1));
+            return UserList;
         }
         catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return UserList;
     }
-}
+    @Override
+    public ArrayList<Feedback> GetUserFeedbacks(int User_id)
+    {
+    	ArrayList<Feedback> FeedbackList=new ArrayList<Feedback>();
+        String query="select * from feedback where user_id=?";
+        try{
+            PreparedStatement ps= conn.prepareStatement(query);
+            ps.setInt(1,User_id);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next())
+            {
+            	Feedback fb=new Feedback(rs.getInt(1), rs.getNString(2),rs.getNString(3), rs.getInt(4), rs.getNString(5));
+            	FeedbackList.add(fb);
+            }
+            return FeedbackList;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return FeedbackList;
+    }
+        @Override
+        public Feedback GetUser(int User_id)
+        {
+        	
+            String query="select * from feedback where user_id=? limit 1";
+            try{
+                PreparedStatement ps= conn.prepareStatement(query);
+                ps.setInt(1,User_id);
+                ResultSet rs= ps.executeQuery();
+                rs.next();
+                	Feedback fb=new Feedback(rs.getInt(1), rs.getNString(2),rs.getNString(3), rs.getInt(4), rs.getNString(5));
+                System.out.println(fb);
+                
+                return fb;
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+            return null;
+    }
+        
+        @Override
+        public boolean delete(int feedbackid) {
+            String query="delete from admin where admin_id=?";
+            try{
+                PreparedStatement ps= conn.prepareStatement(query);
+                ps.setInt(1,feedbackid);
+                ps.executeUpdate();
+                return true;
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+            return false;
+        }
+    }
+

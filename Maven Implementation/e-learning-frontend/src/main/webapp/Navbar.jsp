@@ -4,6 +4,8 @@
 <%@page import="com.amdocs.project.model.*" %>
 <%@page import="com.amdocs.project.controller.AdminLoginHandler"%>
 <% 
+User user=(User)session.getAttribute("User_ID");
+Admin admin=(Admin)session.getAttribute("Admin_ID");
 %>
 <!DOCTYPE html>
 <html>
@@ -84,26 +86,26 @@
 						<li class="nav-item dropdown pl-5"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
 							<%
-							User user=(User)session.getAttribute("User_ID");
+							
 							if (user == null && admin == null) {
 							%>User<%
 							}
 							%> <%
- if (user != null && AdminLoginHandler.getName() == null) {
+ if (user != null && admin == null) {
  %>
 							<%=user.getName()%> ( <%=user.getUser_ID()%> )<%
 							}
 							%> <%
- if (user == null && AdminLoginHandler.getName() != null) {
+ if (user == null && admin != null) {
  %>
-							<%=AdminLoginHandler.getName()%> ( <%=AdminLoginHandler.getAdmin_ID()%> )<%
+							<%=admin.getName()%> ( <%=admin.getAdmin_ID()%> )<%
 							}
 							%>
 					</a>
 						<ul class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<%
-							if (user != null || AdminLoginHandler.getName() != null) {
+							if (user != null || admin != null) {
 							%>
 							<li><a class="dropdown-item  btn btn-outline-danger"
 								href="Logout.jsp">Logout</a></li>

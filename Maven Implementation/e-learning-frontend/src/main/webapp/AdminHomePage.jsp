@@ -19,7 +19,7 @@
 			<hr style="color:black">
 			
 			<div class="container">
-				<div class="accordion" id="accordionExample">
+				<div class="accordion">
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">
 							<button class="accordion-button btn btn-outline-dark col-sm-4" type="button"
@@ -64,7 +64,7 @@
 							<button class="accordion-button btn btn-outline-dark col-sm-4" type="submit"
 								data-bs-toggle="collapse" data-bs-target="#collapseTwo"
 								aria-expanded="true" aria-controls="headingTwo">
-								Your Enrolled Courses</button>
+								Total Courses</button>
 								
 						</h2>
 						<div id="collapseTwo" class="accordion-collapse collapse "
@@ -128,20 +128,65 @@
 							<button class="accordion-button btn btn-outline-dark col-sm-4" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseThree"
 								aria-expanded="true" aria-controls="headingThree">
-								Your Contacts</button>
+								All FeedBacks</button>
 						</h2>
 						<div id="collapseThree" class="accordion-collapse collapse "
 							aria-labelledby="headingThree" >
-							<div class="accordion-body">
-								<strong>This is the first item's accordion body.</strong> It is
-								shown by default, until the collapse plugin adds the appropriate
-								classes that we use to style each element. These classes control
-								the overall appearance, as well as the showing and hiding via
-								CSS transitions. You can modify any of this with custom CSS or
-								overriding our default variables. It's also worth noting that
-								just about any HTML can go within the
-								<code>.accordion-body</code>
-								, though the transition does limit overflow.
+							<div class="accordion-body col-sm-8">
+								<div class="accordion" id="accordionExample">
+								<% 
+								FeedbackDAO FB=new FeedbackDAOIMPL();
+								ArrayList<Integer> AllUsers=FB.AllUserIDs();
+								
+								for(int i=0;i<AllUsers.size();i++)
+								{
+									FeedbackDAO fb=new FeedbackDAOIMPL();
+									ArrayList<Feedback> feedbacks =fb.GetUserFeedbacks(AllUsers.get(i));
+									FeedbackDAO feedbackdao=new FeedbackDAOIMPL();
+							        Feedback feedbackUser=feedbackdao.GetUser(AllUsers.get(i));
+								
+									%>
+										
+										<hr>
+											  <div class="accordion-item row">
+											  <div class="col-sm-1"></div>
+											    <h2 class="accordion-header col-sm-4" id="heading<%=i %>">
+											      <button class="accordion-button collapsed btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i%>">
+											        
+											        ( <%=feedbackUser.getUser_ID() %> ) | <%=feedbackUser.getName() %> | <%=feedbackUser.getEmail() %>
+											      </button>
+											    </h2>
+											    
+											    <div id="collapse<%=i %>" class="accordion-collapse collapse col-sm-12 ml-5 pl-5" aria-labelledby="heading<%=i %>">
+											      <div class="accordion-body">
+											        <%
+											        	for(int j=0;j<feedbacks.size();j++)
+											        	{
+											        		System.out.print(i);
+											        		System.out.println(feedbacks.get(j));
+											        		%>	
+											        		<hr>
+											        			<div class="row">
+											        			<div class="col-sm-2"><strong>Feedback ID :</strong></div>
+											        			<div class="col-sm-4"><%=feedbacks.get(j).getFeedback_ID() %></div>
+											        		 	<div class="col-sm-2"><strong>Feedback :</strong> </div>	
+											        		 	<div class="col-sm-4"><%=feedbacks.get(j).getFeedback() %></div>
+											        		 		
+											        		 		
+											        		 		
+											        		 </div>
+											        		<%
+											        	}
+											        %>
+											      </div>
+											    </div>
+											  
+											  </div>
+											 
+									<%
+								}
+									%>
+								</div>								
 							</div>
 						</div>
 					</div>

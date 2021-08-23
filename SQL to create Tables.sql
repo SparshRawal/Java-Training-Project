@@ -47,11 +47,13 @@ c_fees=0,
 c_resource=""
 where course_id=111;
 
-create table feedback(user_id int(20) references user,name varchar(100),email varchar(100),f_id int(20) primary key auto_increment,feedback varchar(100));
-insert into feedback(user_id,name,email,feedback)values(101,'ankit','ankit@gmail.com','good');
-insert into feedback(user_id,name,email,feedback)values(105,'harshitha','harshitha@gmail.com','good');
+create table feedback(user_id int(20) references user,name varchar(100),email varchar(100),f_id int(20) primary key auto_increment,feedback varchar(100))auto_increment=501;
+insert into feedback(user_id,name,email,feedback)values(101,'ankit','ankit@gmail.com','great');
+insert into feedback(user_id,name,email,feedback)values(105,'harshitha','harshitha@gmail.com','could be better');
 select * from feedback;
 drop table feedback;
+ select distinct user_id from feedback;
+ select * from feedback where user_id=101;
 
 create table user_course_connector(id int(20) primary key auto_increment,User_ID int(20) references user,Course_ID int(20) references course,constraint uid_cid unique(User_ID,Course_ID));
 insert into user_course_connector(User_ID,Course_ID) values(106,111);
