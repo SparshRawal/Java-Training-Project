@@ -6,6 +6,7 @@
 <%@page import="com.amdocs.project.dao.impl.*"%>
 <%@page import="com.amdocs.project.model.*"%>
 <%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,27 +33,27 @@
 							<div class="accordion-body">
 							<div class="row">
 								<div class="col-sm-2">User ID : </div>
-								<div class="col-sm-4"><%=LoginHandler.getUser_ID() %></div>								 
+								<div class="col-sm-4"><%=user.getUser_ID() %></div>								 
 							</div>
 							<div class="row">
 								<div class="col-sm-2">Name : </div>
-								<div class="col-sm-4"><%=LoginHandler.getName() %></div>								 
+								<div class="col-sm-4"><%=user.getName() %></div>								 
 							</div>
 							<div class="row">
 								<div class="col-sm-2">Email ID : </div>
-								<div class="col-sm-4"><%=LoginHandler.getEmail()%></div>								 
+								<div class="col-sm-4"><%=user.getEmail()%></div>								 
 							</div>
 							<div class="row">
 								<div class="col-sm-2">Contact Number : </div>
-								<div class="col-sm-4"><%=LoginHandler.getPhone()%></div>								 
+								<div class="col-sm-4"><%=user.getPhone()%></div>								 
 							</div>
 							<div class="row">
 								<div class="col-sm-2">Address : </div>
-								<div class="col-sm-4"><%=LoginHandler.getAddress()%></div>								 
+								<div class="col-sm-4"><%=user.getAddress()%></div>								 
 							</div>
 							<div class="row">
 								<div class="col-sm-2">Registration Date : </div>
-								<div class="col-sm-4"><%=LoginHandler.getDate() %></div>								 
+								<div class="col-sm-4"><%=user.getDate() %></div>								 
 							</div>
 							</div>
 						</div>
@@ -71,8 +72,9 @@
 							aria-labelledby="headingTwo" >
 							<div class="accordion-body">
 								<%
-									CourseDAO dao=new CourseDAOIMPL();
-									ArrayList<Integer> list = LoginHandler.List;
+									CourseDAO dao= new CourseDAOIMPL();
+									UserCourseConnectorDAO c_dao=new UserCourseConnectorDAOIMPL();
+									ArrayList<Integer> list = c_dao.GetEnrolledCourses(user.getUser_ID());
 									for(int i=0;i<list.size();i++)
 									{
 										
@@ -80,21 +82,26 @@
 										
 											%><hr>
 											<div class="row">
-												<div class="col-sm-3">Course Name :</div>
+												<div class="col-sm-3"><strong>Course Name :</strong></div>
 												<div class="col-sm-3"><%=course.getCourse_name() %></div>
-												<div class="col-sm-3">Course Fees :</div>
+												<div class="col-sm-3"><strong>Course Fees :</strong></div>
 												<div class="col-sm-3">Rs.<%=course.getCourse_Fee() %></div>
-											</div>
+											</div><br>
 											<div class="row">
-													<div class="col-sm-3">Decription :</div>
+													<div class="col-sm-3"><strong>Description :</strong></div>
 													<div class="col-sm-3"><%=course.getCourse_Desc() %></div>
-													<div class="col-sm-3">Resource File :</div>
+													<div class="col-sm-3"><strong>Resource File :</strong></div>
 													<div class="col-sm-3"><%=course.getCourse_Resource() %></div>
 											</div><%
 										
 									}
 								
 								%>
+								<hr>
+								<div class="row">
+								<div class="col-sm-4"></div>
+								<a href="Enroll.jsp" class="btn btn-outline-primary btn-block col-sm-4">Enroll for new course !</a>
+								</div>
 							</div>
 						</div>
 					</div>

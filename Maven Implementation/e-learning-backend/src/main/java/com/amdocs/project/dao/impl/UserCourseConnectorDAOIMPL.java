@@ -32,6 +32,32 @@ public class UserCourseConnectorDAOIMPL implements UserCourseConnectorDAO {
         }
 		return list;
 	}
+	public ArrayList<Integer> GetUnenrolledCourses(int User_ID)
+	{
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		String query=" select course_id "
+				+ " from course "
+				+ " where course_id not in "
+				+ " (select course.course_id "
+				+ " from user,course,user_course_connector "
+				+ " where user.User_ID = user_course_connector.User_ID "
+				+ " and course.course_id = user_course_connector.Course_ID "
+				+ " and user.User_ID=?)";
+        try{
+        	
+            PreparedStatement ps= conn.prepareStatement(query);
+            ps.setInt(1,User_ID);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }   
+            return list;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+		return list;
+	}
 	@Override
 	public boolean EnrollCourse(int User_ID,int Course_ID)
 	{

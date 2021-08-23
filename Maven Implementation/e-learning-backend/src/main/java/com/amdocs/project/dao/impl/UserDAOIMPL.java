@@ -5,6 +5,7 @@ import com.amdocs.project.db.DBUtils;
 import com.amdocs.project.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDAOIMPL implements UserDAO {
     Connection conn= DBUtils.getConn();
@@ -38,7 +39,7 @@ public class UserDAOIMPL implements UserDAO {
                 Date date=data.getDate(6);
                 String password=data.getNString(7);
                 String image=data.getNString(8);
-                System.out.println("User_ID : "+user_ID+"\tName : "+name+"\tPhone : "+phone+"\tEmail : "+email+"\tAddress : "+address+"\tAddress : "+address+"\tDate : "+date+"\tPassword : "+password+"\tUpload_Image : "+image);
+//                System.out.println("User_ID : "+user_ID+"\tName : "+name+"\tPhone : "+phone+"\tEmail : "+email+"\tAddress : "+address+"\tAddress : "+address+"\tDate : "+date+"\tPassword : "+password+"\tUpload_Image : "+image);
             }
             return true;
         }
@@ -100,7 +101,7 @@ public class UserDAOIMPL implements UserDAO {
             String address=data.getNString(5);
             Date date=data.getDate(6);
             String image=data.getNString(7);
-            System.out.println("User_ID : "+user_ID+"\tName : "+name+"\tPhone : "+phone+"\tEmail : "+email+"\tAddress : "+address+"\tAddress : "+address+"\tDate : "+date+"\tUpload_Image : "+image);
+//            System.out.println("User_ID : "+user_ID+"\tName : "+name+"\tPhone : "+phone+"\tEmail : "+email+"\tAddress : "+address+"\tAddress : "+address+"\tDate : "+date+"\tUpload_Image : "+image);
             User login =new User(user_ID,name,Email,address,phone,image,date);
             return login;
         }
@@ -108,5 +109,32 @@ public class UserDAOIMPL implements UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    @Override
+    public ArrayList<User> GetAllUsers() {
+        String display="select User_ID,Name,Phone_No,Email,Address,Reg_Date,Upload_Photo from user";
+        ArrayList<User> UserList=new ArrayList<User>();
+        try{
+            Statement stmt=conn.createStatement();
+            ResultSet data=stmt.executeQuery(display);
+            while (data.next())
+            {
+            	int user_ID=data.getInt(1);
+                String name=data.getNString(2);
+                long phone=data.getLong(3);
+                String Email=data.getNString(4);
+                String address=data.getNString(5);
+                Date date=data.getDate(6);
+                String image=data.getNString(7);
+                User user = new User(user_ID,name,Email,address,phone,image,date);
+                UserList.add(user);
+//                System.out.println("User_ID : "+user_ID+"\tName : "+name+"\tPhone : "+phone+"\tEmail : "+Email+"\tAddress : "+address+"\tDate : "+date+"\tUpload_Image : "+image);
+            }
+            return UserList;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return UserList;
     }
 }

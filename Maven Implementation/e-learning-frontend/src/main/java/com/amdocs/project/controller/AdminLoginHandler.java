@@ -20,58 +20,21 @@ import com.amdocs.project.dao.UserDAO;
 import com.amdocs.project.dao.impl.AdminDAOIMPL;
 import com.amdocs.project.dao.impl.UserDAOIMPL;
 import com.amdocs.project.model.*;
+import com.mysql.cj.Session;
 
 /**
  * Servlet implementation class RegistrationController
  */
 @WebServlet("/HandleAdminLogin")
 public class AdminLoginHandler extends HttpServlet {
-		private static String Name;
-	    private static String Email;
-	    private static int Admin_ID;   
-	    
 		
 
-	public static String getName() {
-			return Name;
-		}
-		public static void setName(String name) {
-			Name = name;
-		}
-		public static String getEmail() {
-			return Email;
-		}
-		public static void setEmail(String email) {
-			Email = email;
-		}
-		public static int getAdmin_ID() {
-			return Admin_ID;
-		}
-		public static void setAdmin_ID(int admin_ID) {
-			Admin_ID = admin_ID;
-		}
-	public static boolean LogoutAdmin()
-	{
-		AdminLoginHandler.setAdmin_ID(0);
-		AdminLoginHandler.setEmail(null);
-		AdminLoginHandler.setName(null);
-		return true;		
-	}
-
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-
 		HttpSession session=request.getSession(); 
-		if(session!=null) {
-			out.print(session.getAttribute("name"));
-			out.print("Please Logout");
-		}
-		else
-		{
-			out.print(session.getAttribute("name"));
-		}
+		
 //		session.invalidate();
 //		request.getRequestDispatcher("index.jsp").forward(request, response);
 		int id=Integer.parseInt(request.getParameter("id"));
@@ -85,18 +48,20 @@ public class AdminLoginHandler extends HttpServlet {
 		
 		if(status!=null)
 		{
-			boolean valUser =LoginHandler.LogoutUser();
-			Admin_ID=status.getAdmin_ID();
-			Name=status.getName();
-			Email=status.getEmail();
+			int Admin_ID=status.getAdmin_ID();
+			String Name=status.getName();
+			String Email=status.getEmail();
+			
+			Admin admin = new Admin(id, Name, Email);
+			session.setAttribute("Admin_ID", admin);
+			session.setAttribute("User_ID", null);
 			
 			request.setAttribute("id", Admin_ID);
 			request.setAttribute("name", Name);
 			request.setAttribute("email", Email);
 			
-
-			request.getRequestDispatcher("AdminHomePage.jsp").forward(request, response);
-//			session.setAttribute("name",Name);
+			response.sendRedirect("AdminHomePage.jsp");
+			
 		}
 			
 		else

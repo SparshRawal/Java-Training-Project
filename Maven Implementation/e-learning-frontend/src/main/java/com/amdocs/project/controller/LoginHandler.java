@@ -29,95 +29,17 @@ import com.amdocs.project.model.*;
  */
 @WebServlet("/HandleUserLogin")
 public class LoginHandler extends HttpServlet {
-	 private static String Name;
-	    private static String Email;
-	    private static String Address;
-	    private static long Phone;
-	    private static String Upload_Image;
-	    private static int User_ID;
-	    private static Date reg_date;
-	    public static ArrayList<Integer> List;
-		
-
-		public static ArrayList<Integer> getList() {
-			return List;
-		}
-
-
-		public static void setList(ArrayList<Integer> list) {
-			List = list;
-		}
-
-	    public static String getName() {
-			return Name;
-		}
-
-		public static void setName(String name) {
-			Name = name;
-		}
-
-		public static String getEmail() {
-			return Email;
-		}
-
-		public static void setEmail(String email) {
-			Email = email;
-		}
-
-		public static String getAddress() {
-			return Address;
-		}
-
-		public static void setAddress(String address) {
-			Address = address;
-		}
-
-		public static long getPhone() {
-			return Phone;
-		}
-
-		public static void setPhone(long phone) {
-			Phone = phone;
-		}
-
-		public static String getUpload_Image() {
-			return Upload_Image;
-		}
-
-		public static void setUpload_Image(String upload_Image) {
-			Upload_Image = upload_Image;
-		}
-
-		public static int getUser_ID() {
-			return User_ID;
-		}
-
-		public static void setUser_ID(int user_ID) {
-			User_ID = user_ID;
-		}
-
-		public static Date getDate() {
-			return reg_date;
-		}
-
-		public static void setDate(Date date) {
-			reg_date = date;
-		}
-		public static boolean LogoutUser()
-		{
-			LoginHandler.setName(null);;
-			LoginHandler.setEmail(null);
-			LoginHandler.setAddress(null);
-			LoginHandler.setPhone(0);
-			LoginHandler.setUpload_Image(null);
-			LoginHandler.setUser_ID(0);
-			LoginHandler.setDate(null);
-			return true;		
-		}
-		
-
+	 		
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		ArrayList<Integer> list,UnenrolledList=new ArrayList<Integer>();
+		UserCourseConnectorDAO c_dao= new UserCourseConnectorDAOIMPL();
+		request.getRequestDispatcher("UserHomePage.jsp").include(request, response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
@@ -135,14 +57,18 @@ public class LoginHandler extends HttpServlet {
 		
 		if(status!=null)
 		{
-			boolean valAdmin=AdminLoginHandler.LogoutAdmin();  
-			User_ID=status.getUser_ID();
-			Name=status.getName();
-			Email=status.getEmail();
-			Address=status.getAddress();
-			reg_date=status.getDate();
-			Phone=status.getPhone();
-			Upload_Image=status.getUpload_Image();
+			 
+			int User_ID=status.getUser_ID();
+			String Name=status.getName();
+			String Email=status.getEmail();
+			String Address=status.getAddress();
+			Date reg_date=status.getDate();
+			long Phone=status.getPhone();
+			String Upload_Image=status.getUpload_Image();
+			User login=new User(User_ID, Name, email, Address, Phone, Upload_Image, reg_date);
+			session.setAttribute("User_ID", login);
+			session.setAttribute("Admin_ID",null);
+			
 			request.setAttribute("id", User_ID);
 			request.setAttribute("name", Name);
 			request.setAttribute("email", Email);
@@ -151,12 +77,14 @@ public class LoginHandler extends HttpServlet {
 			request.setAttribute("phone", Phone);
 			request.setAttribute("file", Upload_Image);
 			  
-	        session.setAttribute("name",Name); 
-	        UserCourseConnectorDAO c_dao= new UserCourseConnectorDAOIMPL();
-			list=c_dao.GetEnrolledCourses(User_ID);
-			List=list;
-			System.out.println(List);
-			request.getRequestDispatcher("UserHomePage.jsp").include(request, response);
+//	        session.setAttribute("name",Name); 
+//	        UserCourseConnectorDAO c_dao= new UserCourseConnectorDAOIMPL();
+//			list=c_dao.GetEnrolledCourses(User_ID);
+//			List=list;
+//			UnenrolledList=c_dao.GetUnenrolledCourses(User_ID);
+//			System.out.println(List);
+			response.sendRedirect("UserHomePage.jsp");
+			
 		}
 			
 		else

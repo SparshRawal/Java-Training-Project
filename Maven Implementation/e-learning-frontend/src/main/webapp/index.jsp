@@ -9,7 +9,7 @@
 <title>Login / Sign In</title>
 </head>
 <body>
-	Name :  <%=LoginHandler.getName() %> <%=AdminLoginHandler.getName() %>
+	Name :  <%=user%> <%=session.getAttribute("Admin_ID") %>
 
 </body>
 </html>

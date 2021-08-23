@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.amdocs.project.controller.LoginHandler"%>
+<%@page import="com.amdocs.project.model.*" %>
 <%@page import="com.amdocs.project.controller.AdminLoginHandler"%>
+<% 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +38,7 @@
 
 			
 					<%
-					if (LoginHandler.getName() != null && AdminLoginHandler.getName() == null) {
+					if (session.getAttribute("User_ID") != null && session.getAttribute("Admin_ID") == null) {
 					%>
 					
 					<li class="nav-item pl-5"><a href="UserHomePage.jsp"
@@ -50,7 +53,7 @@
 					for(int i=0;i<5;i++)
 					{%><li class="nav-item pr-5 pl-5"></li><%}
 					%><li class="nav-item pr-3 pl-5"></li><%
-					} else if (LoginHandler.getName() == null && AdminLoginHandler.getName() != null) {
+					} else if (session.getAttribute("User_ID") == null && session.getAttribute("Admin_ID") != null) {
 					%>
 					
 					<li class="nav-item pl-5"><a href="AdminHomePage.jsp"
@@ -81,16 +84,17 @@
 						<li class="nav-item dropdown pl-5"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
 							<%
-							if (LoginHandler.getName() == null && AdminLoginHandler.getName() == null) {
+							User user=(User)session.getAttribute("User_ID");
+							if (user == null && admin == null) {
 							%>User<%
 							}
 							%> <%
- if (LoginHandler.getName() != null && AdminLoginHandler.getName() == null) {
+ if (user != null && AdminLoginHandler.getName() == null) {
  %>
-							<%=LoginHandler.getName()%> ( <%=LoginHandler.getUser_ID()%> )<%
+							<%=user.getName()%> ( <%=user.getUser_ID()%> )<%
 							}
 							%> <%
- if (LoginHandler.getName() == null && AdminLoginHandler.getName() != null) {
+ if (user == null && AdminLoginHandler.getName() != null) {
  %>
 							<%=AdminLoginHandler.getName()%> ( <%=AdminLoginHandler.getAdmin_ID()%> )<%
 							}
@@ -99,7 +103,7 @@
 						<ul class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<%
-							if (LoginHandler.getName() != null || AdminLoginHandler.getName() != null) {
+							if (user != null || AdminLoginHandler.getName() != null) {
 							%>
 							<li><a class="dropdown-item  btn btn-outline-danger"
 								href="Logout.jsp">Logout</a></li>

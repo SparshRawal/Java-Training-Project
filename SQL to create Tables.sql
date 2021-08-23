@@ -40,6 +40,13 @@ select c_name,c_desp,c_fees,c_resource from course where course_id=111;
 Select * from course;
 drop table course;
 
+Update course set 
+c_name="",
+c_desp="",
+c_fees=0,
+c_resource=""
+where course_id=111;
+
 create table feedback(user_id int(20) references user,name varchar(100),email varchar(100),f_id int(20) primary key auto_increment,feedback varchar(100));
 insert into feedback(user_id,name,email,feedback)values(101,'ankit','ankit@gmail.com','good');
 insert into feedback(user_id,name,email,feedback)values(105,'harshitha','harshitha@gmail.com','good');
@@ -53,6 +60,16 @@ insert into user_course_connector(User_ID,Course_ID) values(102,111);
 insert into user_course_connector(User_ID,Course_ID) values(102,112) ;
 drop table user_course_connector;
 select * from user_course_connector;
+ 
+ select course_id
+ from course 
+ where course_id not in 
+ (select course.course_id 
+ from user,course,user_course_connector 
+ where user.User_ID = user_course_connector.User_ID 
+ and course.course_id = user_course_connector.Course_ID 
+ and user.User_ID=106);
+ 
  select user.User_ID,user.Email,course.c_name 
  from user,course,user_course_connector
  where user.User_ID = user_course_connector.User_ID

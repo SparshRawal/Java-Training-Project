@@ -15,6 +15,14 @@ public class Course {
         Course_Desc = course_Desc;
         Course_Fee = course_Fee;
     }
+    public Course(int course_ID,String course_name, String course_Desc,int course_Fee,  String course_Resource )
+    {
+    	Course_ID=course_ID;
+    	Course_name = course_name;
+        Course_Resource = course_Resource;
+        Course_Desc = course_Desc;
+        Course_Fee = course_Fee;
+    }
 
     public String getCourse_name() {
         return Course_name;

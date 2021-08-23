@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="Navbar.jsp"%>
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -13,7 +13,7 @@
 			<h2 style="text-align: center">Login</h2>
 			<hr><br>
 			<div class="container">
-				<form action="HandleUserLogin" class="form-horizontal" method="GET">
+				<form action="HandleUserLogin" class="form-horizontal" method="POST">
 					<form style="width: 300px">
 						<div class="form-group row">
 							<div class="col-sm-2"></div>

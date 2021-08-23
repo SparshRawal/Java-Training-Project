@@ -26,43 +26,12 @@ import com.amdocs.project.model.*;
  */
 @WebServlet("/HandleLogout")
 public class LogoutHandler extends HttpServlet {
-	private static String Name;
-	private static String Email;
-	private static int Admin_ID;
-
-	public static String getName() {
-		return Name;
-	}
-
-	public static void setName(String name) {
-		Name = name;
-	}
-
-	public static String getEmail() {
-		return Email;
-	}
-
-	public static void setEmail(String email) {
-		Email = email;
-	}
-
-	public static int getAdmin_ID() {
-		return Admin_ID;
-	}
-
-	public static void setAdmin_ID(int admin_ID) {
-		Admin_ID = admin_ID;
-	}
-
-	@Override
+		@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
-		boolean valUser =LoginHandler.LogoutUser();
-		boolean valAdmin=AdminLoginHandler.LogoutAdmin();
-
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 
 	}

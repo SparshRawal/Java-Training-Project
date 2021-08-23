@@ -13,7 +13,7 @@
 			<h2 style="text-align: center">Admin Login</h2>
 			<br>
 			<div class="container">
-				<form action="HandleAdminLogin" class="form-horizontal" method="GET">
+				<form action="HandleAdminLogin" class="form-horizontal" method="POST">
 					<form style="width: 300px">
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
