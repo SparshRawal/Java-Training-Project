@@ -26,17 +26,17 @@ Admin admin=(Admin)session.getAttribute("Admin_ID");
 <title>eLearning Online Portal</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
 
 
-		<div class="container-fluid">
-			<span style="color: white">E Learning Portal</span>
+		<div class="navbar-collapse collapse w-50 order-1  dual-collapse2">
+			<a class="primary" style="font-size: 20px;" href="index.jsp"><img class="logo" src="images/home-icon.png"></a>
 		
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 		<div class="collapse navbar-collapse" id="navbarNav">
-				      <ul class="navbar-nav">
+				      <ul class="navbar-nav mr-auto">
 
 			
 					<%
@@ -44,61 +44,57 @@ Admin admin=(Admin)session.getAttribute("Admin_ID");
 					%>
 					
 					<li class="nav-item pl-5"><a href="UserHomePage.jsp"
-						class="btn btn-outline-light ">User Home</a></li>
+						class="btn btn-outline-secondary ">User Home</a></li>
 					<li class="nav-item pl-5"><a href="ContactForm.jsp"
-						class="btn btn-outline-light">Contact Form</a></li>
+						class="btn btn-outline-secondary">Contact Form</a></li>
 					
 					<li class="nav-item pl-5"><a href="FeedbackForm.jsp"
-						class="btn btn-outline-light">FeedBack Form</a></li>
+						class="btn btn-outline-secondary">FeedBack Form</a></li>
 				
 					<%
-					for(int i=0;i<5;i++)
-					{%><li class="nav-item pr-5 pl-5"></li><%}
-					%><li class="nav-item pr-3 pl-5"></li><%
 					} else if (session.getAttribute("User_ID") == null && session.getAttribute("Admin_ID") != null) {
 					%>
 					
 					<li class="nav-item pl-5"><a href="AdminHomePage.jsp"
-						class="btn btn-outline-light ">Admin Home</a></li>
-					<li class="nav-item pl-5"><a href="CourseRegistration.jsp"
-						class="btn btn-outline-light">View Registered Users
+						class="btn btn-outline-secondary ">Admin Home</a></li>
+					<li class="nav-item pl-5"><a href="ExistingUsers.jsp"
+						class="btn btn-outline-secondary">View Registered Users
 							</a></li>
-							<li class="nav-item pl-5"><a href="CourseRegistration.jsp"
-						class="btn btn-outline-light">View Feedbacks
+							<li class="nav-item pl-5"><a href="AllFeedbacks.jsp"
+						class="btn btn-outline-secondary">View Feedbacks
 							</a></li>
-							<li class="nav-item pl-5"><a href="CourseRegistration.jsp"
-						class="btn btn-outline-light">View Exisiting Courses
+							<li class="nav-item pl-5"><a href="ExistingCourses.jsp"
+						class="btn btn-outline-secondary">View Exisiting Courses
 							</a></li>
 					<%
-					for(int i=0;i<3;i++)
-					{%><li class="nav-item pr-5 pl-5"></li><%}						
-					%><li class="nav-item pr-3 pl-5"></li><%	
 					
 					} else {%><li class="nav-item pl-5"><a href="index.jsp"
-						class="btn btn-outline-light ">Home</a></li>
+						class="btn btn-outline-secondary ">Home</a></li>
 				<%
-					for(int i=0;i<10;i++)
-					{%><li class="nav-item pr-5 pl-5"></li><%}						
-					%><li class="nav-item pr-3 pl-5"></li><%					
+								
 					}
 					%>
-
-						<li class="nav-item dropdown pl-5"><a
+					</ul>
+					</div>
+					
+						<div class="navbar-collapse collapse w-50 order-3 dual-collapse2 mr-5 pr-5">
+						<ul class="navbar-nav ml-auto ">
+						<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
 							<%
 							
 							if (user == null && admin == null) {
-							%>User<%
+							%><span class="primary">User</span><%
 							}
 							%> <%
  if (user != null && admin == null) {
  %>
-							<%=user.getName()%> ( <%=user.getUser_ID()%> )<%
+							<span class="primary"><%=user.getName()%> ( <%=user.getUser_ID()%> )</span><%
 							}
 							%> <%
  if (user == null && admin != null) {
  %>
-							<%=admin.getName()%> ( <%=admin.getAdmin_ID()%> )<%
+							<span class="primary">ADMIN <%=admin.getName()%> ( <%=admin.getAdmin_ID()%> )</span><%
 							}
 							%>
 					</a>
@@ -121,11 +117,12 @@ Admin admin=(Admin)session.getAttribute("Admin_ID");
 
 						</ul>
 						</li>
+						</ul>
+						</div>
 						
-				</ul>
+				
 			</div>
 		
-</div>
 
 	</nav>
 

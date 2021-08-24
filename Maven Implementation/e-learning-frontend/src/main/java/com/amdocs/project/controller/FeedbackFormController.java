@@ -42,7 +42,7 @@ public class FeedbackFormController extends HttpServlet {
 		boolean status = dao.saveFeedback(fback);
 		
 		if(status)
-			out.println("User Saved Successfully");
+			response.sendRedirect("Success.jsp");
 		else
 			out.println("Try Again");
 	}

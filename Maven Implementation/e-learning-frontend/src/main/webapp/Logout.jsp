@@ -9,13 +9,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login / Sign In</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron bg">
 		<form action="HandleLogout" class="form-horizontal" method="GET">
 					<form style="width: 300px">
-						<h2 style="text-align: center">Do You Really Want to Log Out ?</h2><hr> 
+						<h2 class="primary display-4" style="text-align: center">Do You Really Want to Log Out ?</h2><hr class="secondary"> 
 						<div class="form-group row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-3">

@@ -6,18 +6,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registration Page</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2 style="text-align: center">User Registration Form</h2>
+		<div class="jumbotron bg">
+			<h2 class="primary display-4" style="text-align: center">New User Registration</h2>
 			<br>
+			<hr class="secondary">
 			<div class="container">
 				<form action="RegisterUser" class="form-horizontal" method="POST">
 					<form style="width: 300px">
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="name" style="text-align: left">Name:</label>
+							<label class="col-sm-2 primary" for="name" style="text-align: left">Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="name"
 									placeholder="Enter Name" required>
@@ -25,7 +27,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="email" style="text-align: left">Email
+							<label class="col-sm-2 primary" for="email" style="text-align: left">Email
 								ID:</label>
 							<div class="col-sm-6">
 								<input type="email" class="form-control" name="email"
@@ -34,7 +36,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="pwd">Password:</label>
+							<label class="col-sm-2 primary" for="pwd">Password:</label>
 							<div class="col-sm-6">
 								<input type="password" class="form-control" name="pwd"
 									placeholder="Enter password" required>
@@ -42,7 +44,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="phone" style="text-align: left">Phone
+							<label class="col-sm-2 primary" for="phone" style="text-align: left">Phone
 								Number:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="phone"
@@ -51,7 +53,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="address" style="text-align: left">Address:</label>
+							<label class="col-sm-2 primary" for="address" style="text-align: left">Address:</label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="address"
 									placeholder="Enter Address" required></textarea>
@@ -59,7 +61,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2 mr-3" for="file" style="text-align: left">Upload
+							<label class="col-sm-2 mr-3 primary" for="file" style="text-align: left">Upload
 								Photo:</label>
 							<div class="custom-file col-sm-5">
 								<input type="file" class="custom-file-input pr-4"
@@ -67,6 +69,7 @@
 									class="custom-file-label" for="customFile">Choose file</label>
 							</div>
 						</div>
+						<hr class="secondary">
 						<div class="form-group row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-3">

@@ -11,14 +11,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login / Sign In</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2 style="text-align: center">Course Enrollment Page</h2>
-			<hr style="color:black">
+		<div class="jumbotron bg div-scroll-jumbo">
+			<h2 class="primary display-4" style="text-align: center">Course Enrollment Page</h2>
+			<hr class="secondary">
 			<div class="container">
-				<h3>
+				<h3 class="primary">
 					Courses Available For Enrollment
 				</h3>
 			</div>
@@ -31,19 +32,19 @@
 										
 										Course course=dao.GetCourse(Unenrolledlist.get(i));
 										
-											%><hr>
+											%><hr class="secondary">
 											<div class="container">
 											<div class="row">
 											<div class="col-sm-10">
 											<div class="row">
-												<div class="col-sm-2"><strong>Course Name :</strong></div>
-												<div class="col-sm-4"><%=course.getCourse_name() %></div>
-												<div class="col-sm-2"><strong>Course Fees :</strong></div>
-												<div class="col-sm-4">Rs.<%=course.getCourse_Fee() %></div>
+												<div class="col-sm-2 primary"><strong>Course Name :</strong></div>
+												<div class="col-sm-4 secondary"><%=course.getCourse_name() %></div>
+												<div class="col-sm-2 primary"><strong>Course Fees :</strong></div>
+												<div class="col-sm-4 secondary">Rs.<%=course.getCourse_Fee() %></div>
 											</div><br>
 											<div class="row">
-													<div class="col-sm-2"><strong>Description :</strong></div>
-													<div class="col-sm-10"><%=course.getCourse_Desc() %></div>
+													<div class="col-sm-2 primary"><strong>Description :</strong></div>
+													<div class="col-sm-10 secondary"><%=course.getCourse_Desc() %></div>
 													
 											</div>
 											</div>

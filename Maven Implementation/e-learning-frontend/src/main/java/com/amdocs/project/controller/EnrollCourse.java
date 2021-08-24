@@ -51,11 +51,11 @@ public class EnrollCourse extends HttpServlet {
 		if(status!=false)
 		{
 					
-			response.sendRedirect("UserHomePage.jsp");			
+			response.sendRedirect("Success.jsp");		
 //			request.getRequestDispatcher("HandleUserLogin").include(request, response);
 		}
 			
 		else
-			request.getRequestDispatcher("HandleUserLogin").include(request, response);
+			response.sendRedirect("Failure.jsp");
 	}
 }

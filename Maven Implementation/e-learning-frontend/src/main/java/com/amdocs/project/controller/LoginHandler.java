@@ -83,11 +83,11 @@ public class LoginHandler extends HttpServlet {
 //			List=list;
 //			UnenrolledList=c_dao.GetUnenrolledCourses(User_ID);
 //			System.out.println(List);
-			response.sendRedirect("UserHomePage.jsp");
+			response.sendRedirect("Success.jsp");
 			
 		}
 			
 		else
-			out.println("Try Again");
+			response.sendRedirect("Failure.jsp");
 	}
 }

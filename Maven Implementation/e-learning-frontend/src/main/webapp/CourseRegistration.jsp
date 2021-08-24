@@ -6,18 +6,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Course Registration Form</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
 </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h2 style="text-align: center">Course Registration Form</h2>
+		<div class="jumbotron bg">
+			<h2 class="primary display-4" style="text-align: center">Add New Course</h2>
 			<br>
+			<hr class="secondary">
 			<div class="container">
 				<form action="RegisterCourse" class="form-horizontal" method="POST">
 					<form style="width: 300px">				
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="name" style="text-align: left">Course
+							<label class="col-sm-2 primary" for="name" style="text-align: left">Course
 								Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="course_name"
@@ -26,7 +28,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="feedback" style="text-align: left">Course
+							<label class="col-sm-2 primary" for="feedback" style="text-align: left">Course
 								Description:</label>
 							<div class="col-sm-6">
 								<textarea class="form-control" name="desc"
@@ -36,7 +38,7 @@
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
 
-							<label class="col-sm-2 mr-3" for="file" style="text-align: left">Upload
+							<label class="col-sm-2 mr-3 primary" for="file" style="text-align: left">Upload
 								Course Resources:</label>
 							<div class="custom-file col-sm-5">
 								<input type="file" class="custom-file-input pr-4"
@@ -46,7 +48,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
-							<label class="col-sm-2" for="email" style="text-align: left">Course
+							<label class="col-sm-2 primary" for="email" style="text-align: left">Course
 								Fees:</label>
 							<div class="col-sm-6">
 								<input type="number" class="form-control" name="fees"

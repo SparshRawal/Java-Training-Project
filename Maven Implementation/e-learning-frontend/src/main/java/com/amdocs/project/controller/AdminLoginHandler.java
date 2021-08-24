@@ -60,11 +60,11 @@ public class AdminLoginHandler extends HttpServlet {
 			request.setAttribute("name", Name);
 			request.setAttribute("email", Email);
 			
-			response.sendRedirect("AdminHomePage.jsp");
+			response.sendRedirect("Success.jsp");
 			
 		}
 			
 		else
-			out.println("Try Again");
+			response.sendRedirect("Failure.jsp");
 	}
 }

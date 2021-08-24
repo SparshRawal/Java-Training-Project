@@ -1,0 +1,63 @@
+@charset "ISO-8859-1";
+html,body{
+	background-image: url("../images/Background.jpg");
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	height:100%;
+}
+
+.bg{
+	background: rgba(14, 14, 14, 0.75);
+}
+.bg-navbar
+{
+	background: rgba(14, 14, 14, 0.75)
+}
+.container{
+	margin-top: 20px;
+}
+
+.btn-outline-primary ,.primary{
+	color:#95bf9b;
+	border-color: #95bf9b;
+}
+
+.btn-outline-secondary ,.secondary{
+	color:#a39f60;
+	border-color: #a39f60;
+}
+.div-scroll{
+	height: 250px;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.div-scroll-jumbo{
+	height: 650px;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.btn-outline-primary:hover{
+	background: #95bf9b;
+}
+.btn-outline-secondary:hover{
+	background: #a39f60;
+}
+.form-control,.form-control:focus,.form-control:active{
+	border-color: #95bf9b;
+	color:#a39f60;
+	background: rgba(14, 14, 14, 0.75);	
+}
+.custom-file-input,.custom-file-label{
+	border-color: #95bf9b;
+	color: gray;
+	background: rgba(14, 14, 14, 0.75);
+}
+.logo{
+	margin-left:20px;
+	width: 48px; 
+	background-color: #95bf9b;
+	border-radius: 30px;
+}

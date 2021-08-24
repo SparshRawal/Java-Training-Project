@@ -56,6 +56,6 @@ public class DeleteCourse extends HttpServlet {
 		}
 			
 		else
-			request.getRequestDispatcher("AdminHomePage.jsp").include(request, response);
+			response.sendRedirect("Failure.jsp");
 	}
 }

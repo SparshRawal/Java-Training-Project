@@ -48,8 +48,8 @@ public class UserRegistrationController extends HttpServlet {
 		boolean status = dao.saveUser(user);
 		
 		if(status)
-			out.println("User Saved Successfully");
+			response.sendRedirect("Success.jsp");
 		else
-			out.println("Try Again");
+			response.sendRedirect("Failure.jsp");
 	}
 }
