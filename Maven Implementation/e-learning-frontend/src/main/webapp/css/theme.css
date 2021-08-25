@@ -12,7 +12,7 @@ html,body{
 }
 .bg-navbar
 {
-	background: rgba(14, 14, 14, 0.75)
+	background: rgba(14, 14, 14, 0.75);
 }
 .container{
 	margin-top: 20px;
@@ -21,11 +21,13 @@ html,body{
 .btn-outline-primary ,.primary{
 	color:#95bf9b;
 	border-color: #95bf9b;
+	background: rgba(14, 14, 14, 0.75);
 }
 
 .btn-outline-secondary ,.secondary{
 	color:#a39f60;
 	border-color: #a39f60;
+	background: rgba(14, 14, 14, 0.75);
 }
 .div-scroll{
 	height: 250px;
@@ -60,4 +62,8 @@ html,body{
 	width: 48px; 
 	background-color: #95bf9b;
 	border-radius: 30px;
+}
+.drop{
+	background: rgba(14, 14, 14, 0.75);
+	
 }

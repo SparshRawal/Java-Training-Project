@@ -1,7 +1,7 @@
 create database JDBC_PROJECT;
 use JDBC_PROJECT;
 
-create table user(User_ID int(20) auto_increment primary key,Name varchar(100),Phone_No long,Email varchar(100),Address varchar(100),Reg_Date Date,Password varchar(100),upload_photo long)auto_increment=101;
+create table user(User_ID int(20) auto_increment primary key,Name varchar(100),Phone_No long,Email varchar(100),Address varchar(100),Reg_Date Date,Password varchar(100),upload_photo long ,constraint u_email unique(Email))auto_increment=101;
 insert into user(Name,Phone_No,Email,Address,Reg_Date,Password,Upload_Photo) values('Ankit',4578008234,'ankit@gmail.com','noida','21/01/03','ankit','img.jpg');
 insert into user(Name,Phone_No,Email,Address,Reg_Date,Password,Upload_Photo) values('Rahul',9586234712,'rahul@gmail.com','banglore','21/03/03','rahul','img1.jpg');
 insert into user(Name,Phone_No,Email,Address,Reg_Date,Password,Upload_Photo) values('gouthami',8524379162,'gouthami@gmail.com','anantapur','21/02/03','gouthami','img2.jpg');
@@ -62,6 +62,20 @@ insert into user_course_connector(User_ID,Course_ID) values(102,111);
 insert into user_course_connector(User_ID,Course_ID) values(102,112) ;
 drop table user_course_connector;
 select * from user_course_connector;
+
+
+create table user_contact_connector(id int(20) primary key auto_increment,User_ID int(20) references user,Contact_ID int(20) references contact,constraint uid_cid unique(User_ID,Contact_ID));
+insert into user_contact_connector(User_ID,Contact_ID) values(101,1);
+insert into user_contact_connector(User_ID,Contact_ID) values(102,2);
+insert into user_contact_connector(User_ID,Contact_ID) values(103,3);
+insert into user_contact_connector(User_ID,Contact_ID) values(104,4);
+insert into user_contact_connector(User_ID,Contact_ID) values(105,5);
+insert into user_contact_connector(User_ID,Contact_ID) values(105,6);
+insert into user_contact_connector(User_ID,Contact_ID) values(105,7);
+select * from user_contact_connector;
+drop table user_contact_connector;
+
+select * from contact where User_ID=106;
  
  select course_id
  from course 

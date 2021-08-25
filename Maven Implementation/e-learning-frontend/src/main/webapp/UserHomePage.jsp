@@ -117,15 +117,34 @@
 						<div id="collapseThree" class="accordion-collapse collapse "
 							aria-labelledby="headingThree" >
 							<div class="accordion-body">
-								<strong>This is the first item's accordion body.</strong> It is
-								shown by default, until the collapse plugin adds the appropriate
-								classes that we use to style each element. These classes control
-								the overall appearance, as well as the showing and hiding via
-								CSS transitions. You can modify any of this with custom CSS or
-								overriding our default variables. It's also worth noting that
-								just about any HTML can go within the
-								<code>.accordion-body</code>
-								, though the transition does limit overflow.
+								
+								<% 
+								ContactDAO contacts=new ContactDAOIMPL();
+								ArrayList<Contact> AllContacts=contacts.GetContacts(user.getUser_ID());
+								
+								for(int i=0;i<AllContacts.size();i++)
+								{
+								
+									%>
+										
+										<hr class="secondary">
+											<div class="row">
+												<div class="col-sm-3 primary"><strong>Contact ID :</strong></div>
+												<div class="col-sm-3 secondary"><%=AllContacts.get(i).getContact_ID() %></div>
+												<div class="col-sm-3 primary"><strong>Contact Name :</strong></div>
+												<div class="col-sm-3 secondary"><%=AllContacts.get(i).getName() %></div>
+											</div>
+											<div class="row">
+													<div class="col-sm-3 primary"><strong>E-Mail ID :</strong></div>
+													<div class="col-sm-3 secondary"><%=AllContacts.get(i).getEmail() %></div>
+													<div class="col-sm-3 primary"><strong>Phone :</strong></div>
+													<div class="col-sm-3 secondary">+91 <%=AllContacts.get(i).getPhone() %></div>
+											</div><%
+											 
+									
+								}
+									%>
+								
 							</div>
 						</div>
 					</div>

@@ -17,21 +17,14 @@
 			<div class="container">
 				<form action="RegisterContact" class="form-horizontal" method="POST">
 					<form style="width: 300px">
-						<div class="form-group row">
-							<div class="col-sm-2"></div>
-							<label class="col-sm-2 primary" for="id" style="text-align: left">User
-								ID:</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" name="id"
-									placeholder="Enter User ID">
-							</div>
-						</div>
+						
 						<div class="form-group row">
 							<div class="col-sm-2"></div>
 							<label class="col-sm-2 primary" for="name" style="text-align: left">Name:</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="name"
 									placeholder="Enter Name">
+								<input type="hidden" name="id" value="<%=user.getUser_ID() %>">
 							</div>
 						</div>
 						<div class="form-group row">

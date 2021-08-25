@@ -98,18 +98,18 @@ Admin admin=(Admin)session.getAttribute("Admin_ID");
 							}
 							%>
 					</a>
-						<ul class="dropdown-menu"
+						<ul class="dropdown-menu bg primary"
 							aria-labelledby="navbarDropdownMenuLink">
 							<%
 							if (user != null || admin != null) {
 							%>
-							<li><a class="dropdown-item  btn btn-outline-danger"
+							<li><a class="dropdown-item  btn btn-outline-secondary"
 								href="Logout.jsp">Logout</a></li>
 							<%
 							} else {
 							%><li><a
-								class="dropdown-item btn btn-outline-dark" href="Login.jsp">Login</a></li>
-							<li><a class="dropdown-item btn btn-outline-dark"
+								class="dropdown-item btn btn-outline-primary" href="Login.jsp">Login</a></li>
+							<li><a class="dropdown-item btn btn-outline-primary"
 								href="AdminLogin.jsp">Admin Login</a></li>
 							<%
 							}

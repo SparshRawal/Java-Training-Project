@@ -5,6 +5,7 @@ import com.amdocs.project.db.DBUtils;
 import com.amdocs.project.model.Contact;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ContactDAOIMPL implements ContactDAO {
     Connection conn= DBUtils.getConn();
@@ -23,29 +24,58 @@ public class ContactDAOIMPL implements ContactDAO {
     }
 
     @Override
-    public boolean display() {
-        String display="select * from contact";
+    public Contact GetContact(int contact_id) {
+        String display="select * from contact where contact_id=?";
+        Contact contact=null;
         try{
-            Statement stmt=conn.createStatement();
-            ResultSet data=stmt.executeQuery(display);
-            while (data.next())
-            {
+        	PreparedStatement ps= conn.prepareStatement(display);
+        	ps.setInt(1,contact_id);
+            ResultSet data=ps.executeQuery();
+            data.next();
+            
                 long phone=data.getLong(4);
                 int User_ID=data.getInt(1);
                 String name=data.getNString(2);
                 String email=data.getNString(3);
                 String message=data.getNString(5);
                 int contact_ID=data.getInt(6);
+                contact=new Contact(User_ID, contact_ID, email, name, phone, message);
                 System.out.println("User_ID : "+User_ID+"\tName : "+name+"\tEmail : "+email+"\tPhone No : "+phone+"\tMessage : "+message+"\tContact_ID : "+contact_ID);
-            }
-            return true;
+            
+            return contact;
         }
         catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return contact;
     }
-
+    @Override
+    public ArrayList<Contact> GetContacts(int user_id)
+    {
+    	ArrayList<Contact> C_ID=new ArrayList<Contact>();
+    	String query = "select * from contact where User_ID=?";
+try{
+        	
+            PreparedStatement ps= conn.prepareStatement(query);
+            ps.setInt(1,user_id);
+            ResultSet data=ps.executeQuery();
+            while (data.next()) {
+            	long phone=data.getLong(4);
+                int User_ID=data.getInt(1);
+                String name=data.getNString(2);
+                String email=data.getNString(3);
+                String message=data.getNString(5);
+                int contact_ID=data.getInt(6);
+                Contact contact=new Contact(User_ID, contact_ID, email, name, phone, message);
+            	C_ID.add(contact);
+            }   
+            return C_ID;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+		return C_ID;
+    }
     @Override
     public boolean saveContact(Contact contact) {
         String insert = "insert into contact(User_ID,Name,Email,Phone_no,Message) values(?,?,?,?,?)";
